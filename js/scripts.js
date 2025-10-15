@@ -1,133 +1,94 @@
-// Slider functionality
-let currentSlide = 0;
-const slides = document.querySelectorAll('.slide');
-const dots = document.querySelectorAll('.dot');
-const totalSlides = slides.length;
+/* Comet interactions, navbar, reveals, carousel, counters */
+(() => {
+  const $ = (sel, root=document) => root.querySelector(sel);
+  const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
 
-// Function to show specific slide
-function showSlide(index) {
-    // Remove active class from all slides and dots
-    slides.forEach(slide => slide.classList.remove('active'));
-    dots.forEach(dot => dot.classList.remove('active'));
-    
-    // Handle wrap-around
-    if (index >= totalSlides) {
-        currentSlide = 0;
-    } else if (index < 0) {
-        currentSlide = totalSlides - 1;
-    } else {
-        currentSlide = index;
-    }
-    
-    // Add active class to current slide and dot
-    slides[currentSlide].classList.add('active');
-    dots[currentSlide].classList.add('active');
-}
-
-// Next slide function
-function nextSlide() {
-    showSlide(currentSlide + 1);
-}
-
-// Previous slide function
-function prevSlide() {
-    showSlide(currentSlide - 1);
-}
-
-// Auto-advance slides every 5 seconds
-let slideInterval = setInterval(nextSlide, 5000);
-
-// Reset interval when user manually changes slides
-function resetInterval() {
-    clearInterval(slideInterval);
-    slideInterval = setInterval(nextSlide, 5000);
-}
-
-// Event listeners for navigation buttons
-document.querySelector('.slider-btn.next').addEventListener('click', () => {
-    nextSlide();
-    resetInterval();
-});
-
-document.querySelector('.slider-btn.prev').addEventListener('click', () => {
-    prevSlide();
-    resetInterval();
-});
-
-// Event listeners for dots
-dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-        showSlide(index);
-        resetInterval();
+  // Mobile nav
+  const burger = $('.hamburger');
+  const menu = $('#primary-menu');
+  if (burger && menu) {
+    burger.addEventListener('click', () => {
+      const open = menu.classList.toggle('open');
+      burger.setAttribute('aria-expanded', String(open));
     });
-});
+  }
 
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+  // Sticky nav shadow
+  const navbar = $('.navbar');
+  const toggleNavShadow = () => {
+    if (!navbar) return;
+    const sc = window.scrollY;
+    navbar.style.boxShadow = sc > 4 ? '0 10px 30px rgba(0,0,0,.35)' : 'none';
+  };
+  window.addEventListener('scroll', toggleNavShadow);
+  toggleNavShadow();
+
+  // Reveal on scroll
+  const revealEls = $$('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  revealEls.forEach(el => io.observe(el));
+
+  // Carousel
+  const slides = $$('.slide');
+  const dots = $$('.dot');
+  const nextBtn = $('.slider-btn.next');
+  const prevBtn = $('.slider-btn.prev');
+  let idx = 0;
+  let timer;
+
+  function show(i){
+    if (!slides.length) return;
+    slides.forEach(s => s.classList.remove('active'));
+    dots.forEach(d => d.classList.remove('active'));
+    idx = (i + slides.length) % slides.length;
+    slides[idx].classList.add('active');
+    if (dots[idx]) dots[idx].classList.add('active');
+  }
+  function next(){ show(idx + 1); }
+  function prev(){ show(idx - 1); }
+  function autoplay(){
+    clearInterval(timer);
+    timer = setInterval(next, 6000);
+  }
+  if (nextBtn) nextBtn.addEventListener('click', () => { next(); autoplay(); });
+  if (prevBtn) prevBtn.addEventListener('click', () => { prev(); autoplay(); });
+  dots.forEach((d, i) => d.addEventListener('click', () => { show(i); autoplay(); }));
+  show(0); autoplay();
+
+  // Smooth scroll for in-page anchors
+  $$('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href');
+      const target = id && $(id);
+      if (target) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     });
-});
+  });
 
-// Form submission handling
-const contactForm = document.querySelector('.contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        // Get form values
-        const name = contactForm.querySelector('input[type="text"]').value;
-        const email = contactForm.querySelector('input[type="email"]').value;
-        const message = contactForm.querySelector('textarea').value;
-        
-        // Display success message (in a real application, this would send data to a server)
-        alert(`Thank you ${name}! Your message has been received. We'll get back to you at ${email} soon.`);
-        
-        // Reset form
-        contactForm.reset();
-    });
-}
-
-// Parallax effect for hero section on scroll
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const heroSlider = document.querySelector('.hero-slider');
-    if (heroSlider) {
-        heroSlider.style.transform = `translateY(${scrolled * 0.5}px)`;
-    }
-});
-
-// Add fade-in animation to sections on scroll
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
-
-// Observe all sections
-document.querySelectorAll('section').forEach(section => {
-    section.style.opacity = '0';
-    section.style.transform = 'translateY(20px)';
-    section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(section);
-});
-
-// Initialize first slide as active
-showSlide(0);
-
-console.log('ThinkT IT Solutions website initialized successfully!');
+  // Animated counters (optional if elements exist)
+  $$('.counter[data-target]').forEach(el => {
+    const target = Number(el.dataset.target || 0);
+    const dur = 1200;
+    let start = null;
+    const fmt = (v) => Math.floor(v).toLocaleString();
+    const step = (ts) => {
+      if (!start) start = ts;
+      const p = Math.min(1, (ts - start)/dur);
+      el.textContent = fmt(p * target);
+      if (p < 1) requestAnimationFrame(step);
+    };
+    const obs = new IntersectionObserver((ents) => {
+      if (ents[0].isIntersecting) { requestAnimationFrame(step); obs.disconnect(); }
+    }, { threshold: 0.6 });
+    obs.observe(el);
+  });
+})();
