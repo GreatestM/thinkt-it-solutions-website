@@ -1,250 +1,299 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ThinkT IT Solutions - Professional Brand Management & Web Development</title>
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ThinkT IT Solutions - Professional Brand Management & Web Development</title>
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-    <!-- Modern Tech Navigation Bar -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">
-                <img src="logo-placeholder.svg" alt="ThinkT IT Solutions Logo" class="logo-img">
-                <h1>ThinkT IT Solutions</h1>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact" class="cta-nav">Contact Us</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
+  <!-- Modern, animated sticky navbar -->
+  <nav class="navbar" data-sticky>
+    <div class="container nav-inner">
+      <a class="logo" href="#home" aria-label="ThinkT IT Solutions Home">
+        <img class="logo-img" src="images/logo-placeholder.svg" alt="ThinkT IT Solutions Logo" />
+        <span class="logo-text">ThinkT IT Solutions</span>
+      </a>
+      <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul id="primary-menu" class="nav-menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#timeline">Timeline</a></li>
+        <li><a href="#stack">Tech Stack</a></li>
+        <li><a class="cta-nav" href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-tech-visual" aria-hidden="true">
+        <svg viewBox="0 0 600 100" preserveAspectRatio="none" class="nav-circuit">
+          <polyline points="0,80 100,20 180,60 260,30 340,70 420,40 500,80 600,50" />
+        </svg>
+      </div>
+    </div>
+  </nav>
 
-    <!-- Animated Hero Section -->
-    <section id="home" class="hero-section">
-        <div class="hero-background-animation">
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-        </div>
-        <div class="hero-slider">
-            <div class="slider-container">
-                <div class="slide active">
-                    <div class="slide-content">
-                        <h2>Brand Management Excellence</h2>
-                        <p>Transform your brand with cutting-edge strategies</p>
-                        <a href="#contact" class="cta-button">Get Started</a>
-                    </div>
-                </div>
-                <div class="slide">
-                    <div class="slide-content">
-                        <h2>Web Development Mastery</h2>
-                        <p>Building responsive, modern websites that drive results</p>
-                        <a href="#services" class="cta-button">Our Services</a>
-                    </div>
-                </div>
-                <div class="slide">
-                    <div class="slide-content">
-                        <h2>Digital Innovation</h2>
-                        <p>Empowering businesses with cutting-edge technology solutions</p>
-                        <a href="#about" class="cta-button">Learn More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="slider-controls">
-                <button class="slider-btn prev" aria-label="Previous slide">‹</button>
-                <button class="slider-btn next" aria-label="Next slide">›</button>
-            </div>
-            <div class="slider-dots">
-                <span class="dot active" data-slide="0"></span>
-                <span class="dot" data-slide="1"></span>
-                <span class="dot" data-slide="2"></span>
-            </div>
-        </div>
-    </section>
+  <!-- Hero with animated SVG lines and image carousel -->
+  <header id="home" class="hero-section">
+    <div class="hero-bg">
+      <svg class="hero-lines" viewBox="0 0 1200 600" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="glow" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#00d1ff" />
+            <stop offset="100%" stop-color="#7a5cff" />
+          </linearGradient>
+        </defs>
+        <g class="lines">
+          <polyline points="0,520 150,420 300,500 450,360 600,420 750,320 900,380 1050,300 1200,340" />
+          <polyline points="0,440 120,360 240,420 360,300 480,360 600,280 720,340 840,260 960,320 1080,240 1200,280" />
+        </g>
+      </svg>
+      <div class="particles" aria-hidden="true"></div>
+    </div>
 
-    <!-- Services Section -->
-    <section id="services" class="services-section">
-        <div class="container">
-            <h2 class="section-title">Our Services</h2>
-            <p class="section-subtitle">Comprehensive solutions for your digital needs</p>
-            <div class="services-grid">
-                <div class="service-card reveal-on-scroll">
-                    <div class="service-icon">
-                        <img src="icon-brand-placeholder.svg" alt="Brand Management Icon">
-                    </div>
-                    <h3>Brand Management</h3>
-                    <p>Strategic brand development and positioning to elevate your market presence</p>
-                </div>
-                <div class="service-card reveal-on-scroll">
-                    <div class="service-icon">
-                        <img src="icon-web-placeholder.svg" alt="Web Development Icon">
-                    </div>
-                    <h3>Web Development</h3>
-                    <p>Custom, responsive websites built with modern technologies and best practices</p>
-                </div>
-                <div class="service-card reveal-on-scroll">
-                    <div class="service-icon">
-                        <img src="icon-design-placeholder.svg" alt="UI/UX Design Icon">
-                    </div>
-                    <h3>UI/UX Design</h3>
-                    <p>User-centered design that creates engaging and intuitive experiences</p>
-                </div>
-                <div class="service-card reveal-on-scroll">
-                    <div class="service-icon">
-                        <img src="icon-marketing-placeholder.svg" alt="Digital Marketing Icon">
-                    </div>
-                    <h3>Digital Marketing</h3>
-                    <p>Data-driven marketing strategies to grow your online presence</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="hero-content container">
+      <h1>Elevate Your Brand with Technology</h1>
+      <p>Strategy, design, and engineering to grow your digital presence.</p>
+      <div class="hero-cta">
+        <a href="#services" class="cta-button">Explore Services</a>
+        <a href="#contact" class="cta-secondary">Get a Quote</a>
+      </div>
+    </div>
 
-    <!-- Features Section -->
-    <section id="features" class="features-section">
-        <div class="container">
-            <h2 class="section-title">Why Choose Us</h2>
-            <p class="section-subtitle">We deliver excellence through innovation and expertise</p>
-            <div class="features-grid">
-                <div class="feature-item reveal-on-scroll">
-                    <div class="feature-number">01</div>
-                    <h3>Innovation First</h3>
-                    <p>We stay ahead of trends, bringing you the latest technology solutions</p>
-                </div>
-                <div class="feature-item reveal-on-scroll">
-                    <div class="feature-number">02</div>
-                    <h3>Client-Focused</h3>
-                    <p>Your success is our priority, with personalized attention to every project</p>
-                </div>
-                <div class="feature-item reveal-on-scroll">
-                    <div class="feature-number">03</div>
-                    <h3>Expert Team</h3>
-                    <p>Skilled professionals with years of experience in their respective fields</p>
-                </div>
-                <div class="feature-item reveal-on-scroll">
-                    <div class="feature-number">04</div>
-                    <h3>Proven Results</h3>
-                    <p>Track record of successful projects and satisfied clients</p>
-                </div>
-                <div class="feature-item reveal-on-scroll">
-                    <div class="feature-number">05</div>
-                    <h3>Agile Process</h3>
-                    <p>Flexible methodology ensuring timely delivery and quality output</p>
-                </div>
-                <div class="feature-item reveal-on-scroll">
-                    <div class="feature-number">06</div>
-                    <h3>24/7 Support</h3>
-                    <p>Round-the-clock assistance to keep your projects running smoothly</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="hero-carousel" aria-roledescription="carousel" aria-label="Featured Work">
+      <button class="slider-btn prev" aria-label="Previous slide">‹</button>
+      <div class="slider-container">
+        <figure class="slide active">
+          <img src="images/feature-1-placeholder.jpg" alt="Placeholder mockup: analytics dashboard" />
+          <figcaption>Data-driven Brand Analytics</figcaption>
+        </figure>
+        <figure class="slide">
+          <img src="images/feature-2-placeholder.jpg" alt="Placeholder mockup: responsive website" />
+          <figcaption>Responsive Web Platforms</figcaption>
+        </figure>
+        <figure class="slide">
+          <img src="images/feature-3-placeholder.jpg" alt="Placeholder mockup: mobile app UI" />
+          <figcaption>Modern App Interfaces</figcaption>
+        </figure>
+      </div>
+      <button class="slider-btn next" aria-label="Next slide">›</button>
+      <div class="slider-dots" role="tablist" aria-label="Choose slide">
+        <button class="dot active" role="tab" aria-selected="true" aria-controls="slide-0" data-slide="0"><span class="sr-only">Slide 1</span></button>
+        <button class="dot" role="tab" aria-controls="slide-1" data-slide="1"><span class="sr-only">Slide 2</span></button>
+        <button class="dot" role="tab" aria-controls="slide-2" data-slide="2"><span class="sr-only">Slide 3</span></button>
+      </div>
+    </div>
+  </header>
 
-    <!-- About Section -->
-    <section id="about" class="about-section">
-        <div class="container">
-            <div class="about-content reveal-on-scroll">
-                <h2 class="section-title">About ThinkT IT Solutions</h2>
-                <p>We are a dynamic team of creative professionals dedicated to transforming businesses through innovative technology solutions. With a passion for excellence and a commitment to client success, we've been helping companies establish and grow their digital presence.</p>
-                <p>Our approach combines strategic thinking with technical expertise to deliver solutions that not only meet but exceed expectations. From brand management to web development, we provide end-to-end services that drive measurable results.</p>
-            </div>
-        </div>
-    </section>
+  <!-- Services -->
+  <section id="services" class="section services-section">
+    <div class="container">
+      <header class="section-head">
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-subtitle">Comprehensive solutions for your digital growth</p>
+      </header>
+      <div class="services-grid">
+        <article class="service-card reveal">
+          <img src="icons/brand-placeholder.svg" alt="Brand icon" class="service-icon" />
+          <h3>Brand Management</h3>
+          <p>Strategic positioning, identity systems, and measurable brand programs.</p>
+        </article>
+        <article class="service-card reveal">
+          <img src="icons/webdev-placeholder.svg" alt="Web development icon" class="service-icon" />
+          <h3>Web Development</h3>
+          <p>Fast, accessible, and secure websites built with modern stacks.</p>
+        </article>
+        <article class="service-card reveal">
+          <img src="icons/uiux-placeholder.svg" alt="UI/UX icon" class="service-icon" />
+          <h3>UI/UX Design</h3>
+          <p>Human-centered design that drives engagement and conversions.</p>
+        </article>
+        <article class="service-card reveal">
+          <img src="icons/marketing-placeholder.svg" alt="Marketing icon" class="service-icon" />
+          <h3>Digital Marketing</h3>
+          <p>Performance marketing powered by analytics and experimentation.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <p class="section-subtitle">Let's discuss how we can help your business grow</p>
-            <div class="contact-content reveal-on-scroll">
-                <form class="contact-form">
-                    <div class="form-group">
-                        <input type="text" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" placeholder="Subject">
-                    </div>
-                    <div class="form-group">
-                        <textarea placeholder="Your Message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-button">Send Message</button>
-                </form>
-                <div class="contact-info">
-                    <div class="info-item">
-                        <h4>Email</h4>
-                        <p>info@thinktsolutions.com</p>
-                    </div>
-                    <div class="info-item">
-                        <h4>Phone</h4>
-                        <p>+1 (555) 123-4567</p>
-                    </div>
-                    <div class="info-item">
-                        <h4>Location</h4>
-                        <p>123 Tech Street, Digital City</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- Features -->
+  <section id="features" class="section features-section">
+    <div class="container">
+      <header class="section-head">
+        <h2 class="section-title">Why Choose Us</h2>
+        <p class="section-subtitle">Innovation, expertise, and reliable delivery</p>
+      </header>
+      <div class="features-grid">
+        <div class="feature-item reveal"><span class="feature-number">01</span><h3>Innovation First</h3><p>We adopt emerging tech early to deliver competitive advantage.</p></div>
+        <div class="feature-item reveal"><span class="feature-number">02</span><h3>Client-Focused</h3><p>Transparent communication and measurable outcomes.</p></div>
+        <div class="feature-item reveal"><span class="feature-number">03</span><h3>Expert Team</h3><p>Cross-disciplinary specialists in brand, design, and engineering.</p></div>
+        <div class="feature-item reveal"><span class="feature-number">04</span><h3>Proven Results</h3><p>Case studies spanning SMBs to enterprise programs.</p></div>
+        <div class="feature-item reveal"><span class="feature-number">05</span><h3>Agile Process</h3><p>Adaptive sprints, fast feedback loops, and QA gates.</p></div>
+        <div class="feature-item reveal"><span class="feature-number">06</span><h3>24/7 Support</h3><p>On-call engineers and account managers around the clock.</p></div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>ThinkT IT Solutions</h3>
-                    <p>Empowering businesses through innovative technology solutions and strategic brand management.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="#services">Brand Management</a></li>
-                        <li><a href="#services">Web Development</a></li>
-                        <li><a href="#services">UI/UX Design</a></li>
-                        <li><a href="#services">Digital Marketing</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Connect With Us</h4>
-                    <div class="social-links">
-                        <a href="#" aria-label="Facebook">Facebook</a>
-                        <a href="#" aria-label="Twitter">Twitter</a>
-                        <a href="#" aria-label="LinkedIn">LinkedIn</a>
-                        <a href="#" aria-label="Instagram">Instagram</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 ThinkT IT Solutions. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+  <!-- Team -->
+  <section id="team" class="section team-section">
+    <div class="container">
+      <header class="section-head">
+        <h2 class="section-title">Meet the Team</h2>
+        <p class="section-subtitle">A passionate crew building your future</p>
+      </header>
+      <div class="team-grid">
+        <article class="team-card reveal">
+          <img src="images/team-member-1-placeholder.jpg" alt="Headshot placeholder: Project Lead" />
+          <h3>Alex Johnson</h3>
+          <p class="role">Project Lead</p>
+          <p>Drives delivery and stakeholder alignment across initiatives.</p>
+        </article>
+        <article class="team-card reveal">
+          <img src="images/team-member-2-placeholder.jpg" alt="Headshot placeholder: Design Lead" />
+          <h3>Mia Patel</h3>
+          <p class="role">Design Lead</p>
+          <p>Leads design systems and research-driven experiences.</p>
+        </article>
+        <article class="team-card reveal">
+          <img src="images/team-member-3-placeholder.jpg" alt="Headshot placeholder: Engineering Lead" />
+          <h3>Sam Okoro</h3>
+          <p class="role">Engineering Lead</p>
+          <p>Architects scalable, secure, and performant platforms.</p>
+        </article>
+        <article class="team-card reveal">
+          <img src="images/team-member-4-placeholder.jpg" alt="Headshot placeholder: Marketing Strategist" />
+          <h3>Sofia Martinez</h3>
+          <p class="role">Marketing Strategist</p>
+          <p>Growth programs that connect brand to business goals.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-    <script src="js/scripts.js"></script>
-</body>
-</html>
+  <!-- Timeline -->
+  <section id="timeline" class="section timeline-section">
+    <div class="container">
+      <header class="section-head">
+        <h2 class="section-title">Project Timeline</h2>
+        <p class="section-subtitle">From discovery to launch</p>
+      </header>
+      <ol class="timeline">
+        <li class="milestone reveal"><span class="dot"></span><h3>Discovery & Research</h3><p>Stakeholder interviews, analytics audits, and success metrics.</p></li>
+        <li class="milestone reveal"><span class="dot"></span><h3>Strategy & Roadmap</h3><p>Prioritized backlog, architecture, and delivery plan.</p></li>
+        <li class="milestone reveal"><span class="dot"></span><h3>Design & Prototyping</h3><p>High-fidelity prototypes and usability validation.</p></li>
+        <li class="milestone reveal"><span class="dot"></span><h3>Development</h3><p>Iterative builds with CI, testing, and accessibility checks.</p></li>
+        <li class="milestone reveal"><span class="dot"></span><h3>Launch & Optimize</h3><p>Observability, A/B tests, and continuous improvements.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Technology Stack -->
+  <section id="stack" class="section stack-section">
+    <div class="container">
+      <header class="section-head">
+        <h2 class="section-title">Technology Stack</h2>
+        <p class="section-subtitle">Modern tools for reliable delivery</p>
+      </header>
+      <div class="stack-grid">
+        <div class="stack-card reveal">
+          <img src="icons/frontend-placeholder.svg" alt="Frontend icon" />
+          <h3>Frontend</h3>
+          <ul>
+            <li>HTML5, CSS3, JavaScript (ES2020+)</li>
+            <li>Accessibility-first, responsive layouts</li>
+          </ul>
+        </div>
+        <div class="stack-card reveal">
+          <img src="icons/backend-placeholder.svg" alt="Backend icon" />
+          <h3>Backend</h3>
+          <ul>
+            <li>Node.js, Express</li>
+            <li>REST/GraphQL APIs</li>
+          </ul>
+        </div>
+        <div class="stack-card reveal">
+          <img src="icons/devops-placeholder.svg" alt="DevOps icon" />
+          <h3>DevOps</h3>
+          <ul>
+            <li>GitHub Actions CI/CD</li>
+            <li>Cloud hosting (placeholders)</li>
+          </ul>
+        </div>
+        <div class="stack-card reveal">
+          <img src="icons/analytics-placeholder.svg" alt="Analytics icon" />
+          <h3>Analytics</h3>
+          <ul>
+            <li>Event tracking, SEO, performance budgets</li>
+            <li>Dashboards & insights</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section contact-section">
+    <div class="container contact-grid">
+      <header class="section-head">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-subtitle">Let's discuss how we can help your business grow</p>
+      </header>
+      <form class="contact-form" action="#" method="post">
+        <label>
+          <span class="sr-only">Your Name</span>
+          <input type="text" placeholder="Your Name" required />
+        </label>
+        <label>
+          <span class="sr-only">Your Email</span>
+          <input type="email" placeholder="Your Email" required />
+        </label>
+        <label>
+          <span class="sr-only">Subject</span>
+          <input type="text" placeholder="Subject" />
+        </label>
+        <label class="full">
+          <span class="sr-only">Your Message</span>
+          <textarea rows="5" placeholder="Your Message" required></textarea>
+        </label>
+        <button type="submit" class="submit-button">Send Message</button>
+      </form>
+      <aside class="contact-info">
+        <div class="info-item"><strong>Email</strong><span>info@thinktsolutions.com</span></div>
+        <div class="info-item"><strong>Phone</strong><span>+1 (555) 123-4567</span></div>
+        <div class="info-item"><strong>Location</strong><span>123 Tech Street, Digital City</span></div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Enhanced footer -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <section class="footer-about">
+        <h3>ThinkT IT Solutions</h3>
+        <p>Empowering businesses with modern technology and strategic brand management.</p>
+      </section>
+      <nav class="footer-links" aria-label="Footer">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#timeline">Timeline</a></li>
+          <li><a href="#stack">Tech Stack</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <section class="footer-newsletter">
+        <h4>Newsletter</h4>
+        <form class="newsletter-form" action="#" method="post">
+          <label>
+            <span class="sr-only">Email address</span>
+            <input type="email" placeholder="Email address" required />
+          </label>
+          <button type="submit" class="cta-button small">Subscribe</button>
+        </form>
+      </section>
+      <section class="footer-social">
